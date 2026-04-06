@@ -614,6 +614,41 @@
   color: var(--text-muted);
 }
 
+/* Response stats card */
+.response-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.rs-item {
+  flex: 1;
+  text-align: center;
+}
+
+.rs-val {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.rs-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.rs-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
 /* ---------- TECH SECTION ---------- */
 .tech-section { background: var(--bg-secondary); }
 
