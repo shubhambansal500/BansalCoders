@@ -1,0 +1,234 @@
+/* =========================================
+   BANSAL CODERS - Portfolio Page Styles
+   ========================================= */
+
+/* ---------- FILTER BUTTONS ---------- */
+.portfolio-section { background: var(--bg-secondary); }
+
+.portfolio-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  border-radius: 50px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.filter-btn:hover { color: var(--text-primary); border-color: var(--border-light); }
+
+.filter-btn.active {
+  background: var(--gradient);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 16px rgba(79,110,247,0.3);
+}
+
+/* ---------- PORTFOLIO GRID ---------- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.portfolio-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.portfolio-item:hover {
+  border-color: var(--border-light);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-glow);
+}
+
+.featured-project {
+  grid-column: span 1;
+  border-color: var(--border-light);
+  background: rgba(79,110,247,0.03);
+}
+
+/* Portfolio Image */
+.portfolio-img {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.portfolio-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  position: relative;
+}
+
+.portfolio-placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.1);
+}
+
+/* Overlay on hover */
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5,11,24,0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+.po-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Portfolio Info */
+.portfolio-info {
+  padding: 24px;
+}
+
+.pi-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.portfolio-info h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.portfolio-info p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.pi-results {
+  display: flex;
+  gap: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.pi-result strong {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 800;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pi-result span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ---------- MINI TESTIMONIALS ---------- */
+.mini-testimonials { background: var(--bg-primary); }
+
+.mini-testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.mini-testi {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: var(--transition);
+}
+
+.mini-testi:hover {
+  border-color: var(--border-light);
+  transform: translateY(-3px);
+}
+
+.mini-testi p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.mt-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mt-author strong {
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
+
+/* CTA Reuse */
+.cta-section { background: var(--bg-secondary); padding: 100px 0; }
+.cta-inner {
+  background: linear-gradient(135deg, rgba(79,110,247,0.1), rgba(6,200,240,0.06));
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-blob {
+  position: absolute; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(79,110,247,0.2), transparent);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.cta-inner h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin: 16px 0; }
+.cta-inner p { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 36px; }
+.cta-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .mini-testi-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+}
+
+@media (max-width: 768px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .cta-inner { padding: 48px 24px; }
+}
