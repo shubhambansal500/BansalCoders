@@ -361,9 +361,15 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
 
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <script src="js/main.js"></script>
   <script>
-    // FAQ Accordion
+    // ── EmailJS init ──────────────────────────────────────────
+    emailjs.init('YXTJYIPzEMuosj9cK');
+
+    // ── FAQ Accordion ─────────────────────────────────────────
     document.querySelectorAll('.faq-item').forEach(item => {
       item.querySelector('.faq-q').addEventListener('click', () => {
         const isOpen = item.classList.contains('open');
@@ -372,7 +378,7 @@
       });
     });
 
-    // Formspree AJAX submission
+    // ── Contact Form — EmailJS ────────────────────────────────
     const form = document.getElementById('contact-form');
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -381,27 +387,35 @@
       btn.innerHTML = '<span class="spinner"></span> Sending…';
       btn.disabled = true;
 
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
+      // Collect checked services into a comma-separated string
+      const services = [...form.querySelectorAll('input[name="service"]:checked')]
+        .map(cb => cb.value).join(', ') || 'Not specified';
 
-        if (res.ok) {
-          btn.innerHTML = '✅ Message Sent!';
-          btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
-          form.reset();
-          setTimeout(() => {
-            btn.innerHTML = originalHTML;
-            btn.disabled = false;
-            btn.style.background = '';
-          }, 4000);
-        } else {
-          throw new Error('Server error');
-        }
-      } catch {
-        btn.innerHTML = '❌ Failed — try emailing directly';
+      const templateParams = {
+        from_name:  form.querySelector('#name').value,
+        from_email: form.querySelector('#email').value,
+        phone:      form.querySelector('#phone').value || 'Not provided',
+        service:    services,
+        budget:     form.querySelector('#budget').value || 'Not specified',
+        timeline:   form.querySelector('#timeline').value || 'Not specified',
+        message:    form.querySelector('#message').value,
+      };
+
+      try {
+        await emailjs.send('service_9d4l25t', 'template_idw8a45', templateParams);
+
+        btn.innerHTML = '✅ Message Sent!';
+        btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
+        form.reset();
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          btn.style.background = '';
+        }, 4000);
+
+      } catch (err) {
+        console.error('EmailJS error:', err);
+        btn.innerHTML = '❌ Failed — email us directly';
         btn.style.background = 'linear-gradient(135deg,#ef4444,#dc2626)';
         setTimeout(() => {
           btn.innerHTML = originalHTML;
