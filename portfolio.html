@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio — Bansal Coders</title>
   <meta name="description" content="Browse our portfolio of mobile apps, websites, and software projects. See how we've helped businesses grow." />
+  <meta name="keywords" content="app portfolio, web development portfolio, software projects, Bansal Coders work" />
+  <meta name="author" content="Bansal Coders" />
+  <link rel="canonical" href="https://shubhambansal500.github.io/BansalCoders/portfolio.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shubhambansal500.github.io/BansalCoders/portfolio.html" />
+  <meta property="og:title" content="Portfolio — Bansal Coders" />
+  <meta property="og:description" content="Browse our portfolio of mobile apps, websites, and software projects built for real businesses." />
+  <meta property="og:image" content="https://shubhambansal500.github.io/BansalCoders/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Portfolio — Bansal Coders" />
+  <meta name="twitter:description" content="Browse our portfolio of mobile apps, websites, and software projects built for real businesses." />
+  <meta name="theme-color" content="#050b18" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,6 +25,11 @@
   <link rel="stylesheet" href="css/portfolio.css" />
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="page-loader" class="page-loader" aria-hidden="true">
+    <div class="loader-logo">BC</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
 
   <!-- NAVBAR -->
   <nav class="navbar">
@@ -42,7 +59,7 @@
   </div>
 
   <!-- PAGE HEADER -->
-  <section class="page-header">
+  <section class="page-header" id="main-content">
     <div class="container">
       <div class="section-tag">🎯 Our Work</div>
       <h1>Projects That <span class="gradient-text">Speak for Themselves</span></h1>
@@ -231,38 +248,16 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS MINI -->
-  <section class="mini-testimonials">
+  <!-- OPEN FOR WORK -->
+  <section class="open-for-work-section">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="section-tag">💬 Client Feedback</div>
-        <h2 class="section-title">What Clients Say About <span class="gradient-text">Our Work</span></h2>
-      </div>
-      <div class="mini-testi-grid stagger-children">
-        <div class="mini-testi">
-          <p>"The FitLife app they built for us is now one of the top fitness apps in our category. Outstanding work!"</p>
-          <div class="mt-author">
-            <div class="ta-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:white">RK</div>
-            <div><strong>Rahul K.</strong><span style="display:block;font-size:0.75rem;color:var(--text-muted)">FitLife</span></div>
-            <span style="margin-left:auto;font-size:0.75rem">⭐⭐⭐⭐⭐</span>
-          </div>
+      <div class="ofw-inner reveal">
+        <div class="ofw-icon">🚀</div>
+        <div class="ofw-text">
+          <h3>We're Actively Taking On New Projects</h3>
+          <p>Bansal Coders is a fresh team with big ambitions. If you have a project in mind — big or small — we'd love to build it with you. Early clients get priority attention and our best rates.</p>
         </div>
-        <div class="mini-testi">
-          <p>"ShopNest was built in just 6 weeks and immediately boosted our online sales. Truly impressed!"</p>
-          <div class="mt-author">
-            <div class="ta-avatar" style="background:linear-gradient(135deg,#4f6ef7,#06c8f0);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:white">PR</div>
-            <div><strong>Priya R.</strong><span style="display:block;font-size:0.75rem;color:var(--text-muted)">ShopNest</span></div>
-            <span style="margin-left:auto;font-size:0.75rem">⭐⭐⭐⭐⭐</span>
-          </div>
-        </div>
-        <div class="mini-testi">
-          <p>"The InvoiceBot tool has completely transformed our billing process. Zero errors, zero delays."</p>
-          <div class="mt-author">
-            <div class="ta-avatar" style="background:linear-gradient(135deg,#10b981,#059669);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:white">AJ</div>
-            <div><strong>Amit J.</strong><span style="display:block;font-size:0.75rem;color:var(--text-muted)">TaxPro</span></div>
-            <span style="margin-left:auto;font-size:0.75rem">⭐⭐⭐⭐⭐</span>
-          </div>
-        </div>
+        <a href="contact.html" class="btn btn-primary">Let's Talk →</a>
       </div>
     </div>
   </section>
@@ -340,6 +335,18 @@
       </div>
     </div>
   </footer>
+
+  <div class="fab-group" aria-label="Quick contact options">
+    <a href="mailto:bansalcoding500@gmail.com" class="fab fab-email" aria-label="Email us" title="Email us">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+    </a>
+    <a href="contact.html" class="fab fab-quote" aria-label="Get a free quote" title="Get a free quote">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </a>
+  </div>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 
   <script src="js/main.js"></script>
 </body>

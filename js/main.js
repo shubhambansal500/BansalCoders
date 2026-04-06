@@ -1,13 +1,30 @@
 /* =========================================
-   BANSAL CODERS - Main JavaScript
+   BANSAL CODERS — Main JavaScript
    ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ─── Navbar scroll effect ───────────────────────────────────
+  // ─── Page Loader ─────────────────────────────────────────────
+  const loader = document.getElementById('page-loader');
+  if (loader) {
+    window.addEventListener('load', () => {
+      loader.classList.add('fade-out');
+      setTimeout(() => loader.remove(), 600);
+    });
+    // Fallback — hide after 3s no matter what
+    setTimeout(() => { loader.classList.add('fade-out'); setTimeout(() => loader.remove(), 600); }, 3000);
+  }
+
+  // ─── Navbar scroll effect ────────────────────────────────────
   const navbar = document.querySelector('.navbar');
   const handleScroll = () => {
     navbar?.classList.toggle('scrolled', window.scrollY > 20);
+    // Back to top visibility
+    const btt = document.getElementById('back-to-top');
+    if (btt) btt.classList.toggle('visible', window.scrollY > 400);
+    // FAB group visibility
+    const fabGroup = document.querySelector('.fab-group');
+    if (fabGroup) fabGroup.classList.toggle('visible', window.scrollY > 300);
   };
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
@@ -22,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = mobileMenu?.classList.contains('open') ? 'hidden' : '';
   });
 
-  // Close mobile menu on link click
   mobileMenu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       hamburger?.classList.remove('open');
@@ -61,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const duration = 2000;
     const step = target / (duration / 16);
     let current = 0;
-
     const timer = setInterval(() => {
       current = Math.min(current + step, target);
       el.textContent = Math.floor(current) + suffix;
@@ -78,41 +93,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.5 });
 
-  document.querySelectorAll('.stats-section, .stats-grid').forEach(el => {
+  document.querySelectorAll('.stats-section, .stats-grid, .hero-stats').forEach(el => {
     counterObserver.observe(el);
   });
 
-  // ─── Smooth page transition ──────────────────────────────────
-  document.querySelectorAll('a[href]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel')) {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.2s ease';
-        setTimeout(() => { window.location.href = href; }, 200);
-      });
-    }
-  });
+  // ─── Typing animation ────────────────────────────────────────
+  const typedEl = document.querySelector('.typed-text');
+  if (typedEl) {
+    let words, wordIndex = 0, charIndex = 0, isDeleting = false;
+    try { words = JSON.parse(typedEl.dataset.words); } catch { words = ['Mobile Apps']; }
 
-  // Fade in on load
-  document.body.style.opacity = '0';
-  document.body.style.transition = 'opacity 0.4s ease';
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => { document.body.style.opacity = '1'; });
-  });
+    const type = () => {
+      const current = words[wordIndex];
+      typedEl.textContent = isDeleting
+        ? current.substring(0, charIndex--)
+        : current.substring(0, charIndex++);
+
+      if (!isDeleting && charIndex === current.length + 1) {
+        setTimeout(() => { isDeleting = true; type(); }, 1800);
+        return;
+      }
+      if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+      setTimeout(type, isDeleting ? 60 : 110);
+    };
+    setTimeout(type, 800);
+  }
 
   // ─── Particle background (canvas) ───────────────────────────
   const canvas = document.getElementById('particles-canvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
     let particles = [];
-    let animId;
 
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
+    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
 
     class Particle {
       constructor() { this.reset(); }
@@ -125,32 +141,28 @@ document.addEventListener('DOMContentLoaded', () => {
         this.alpha = Math.random() * 0.5 + 0.1;
       }
       update() {
-        this.x += this.vx;
-        this.y += this.vy;
+        this.x += this.vx; this.y += this.vy;
         if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
       }
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(79, 110, 247, ${this.alpha})`;
+        ctx.fillStyle = `rgba(79,110,247,${this.alpha})`;
         ctx.fill();
       }
     }
 
-    const init = () => {
-      resize();
-      particles = Array.from({ length: 80 }, () => new Particle());
-    };
+    const init = () => { resize(); particles = Array.from({ length: 80 }, () => new Particle()); };
 
     const drawLines = () => {
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+          const dist = Math.sqrt(dx*dx + dy*dy);
           if (dist < 120) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(79,110,247,${0.12 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(79,110,247,${0.12*(1-dist/120)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -164,10 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach(p => { p.update(); p.draw(); });
       drawLines();
-      animId = requestAnimationFrame(animate);
+      requestAnimationFrame(animate);
     };
 
-    window.addEventListener('resize', () => { resize(); });
+    window.addEventListener('resize', resize, { passive: true });
     init();
     animate();
   }
@@ -189,44 +201,39 @@ document.addEventListener('DOMContentLoaded', () => {
       const filter = btn.dataset.filter;
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       document.querySelectorAll('.portfolio-item').forEach(item => {
-        if (filter === 'all' || item.dataset.category === filter) {
+        const show = filter === 'all' || item.dataset.category === filter;
+        item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        if (show) {
           item.style.display = '';
-          setTimeout(() => item.style.opacity = '1', 10);
+          requestAnimationFrame(() => { item.style.opacity = '1'; item.style.transform = ''; });
         } else {
           item.style.opacity = '0';
-          setTimeout(() => item.style.display = 'none', 300);
+          item.style.transform = 'scale(0.95)';
+          setTimeout(() => { item.style.display = 'none'; }, 300);
         }
       });
     });
   });
 
-  // ─── Contact form ────────────────────────────────────────────
-  const contactForm = document.getElementById('contact-form');
-  contactForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = contactForm.querySelector('[type="submit"]');
-    const originalText = btn.innerHTML;
-
-    btn.innerHTML = '<span class="spinner"></span> Sending...';
-    btn.disabled = true;
-
-    setTimeout(() => {
-      btn.innerHTML = '✅ Message Sent!';
-      btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-      contactForm.reset();
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-        btn.style.background = '';
-      }, 3000);
-    }, 1500);
+  // ─── Back to top ─────────────────────────────────────────────
+  document.getElementById('back-to-top')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // ─── Tooltip on hover for tech stack items ───────────────────
-  document.querySelectorAll('[data-tooltip]').forEach(el => {
-    el.setAttribute('title', el.dataset.tooltip);
+  // ─── Smooth page transition ──────────────────────────────────
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel')) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.classList.add('page-exit');
+        setTimeout(() => { window.location.href = href; }, 220);
+      });
+    }
   });
+
+  // Fade in on load
+  requestAnimationFrame(() => { document.body.classList.add('page-enter'); });
 
 });

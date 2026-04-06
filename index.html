@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bansal Coders — Build. Launch. Grow.</title>
   <meta name="description" content="Bansal Coders builds world-class mobile apps, websites, and utility software that help businesses grow faster." />
+  <meta name="keywords" content="mobile app development, website development, utility software, Flutter, React, Node.js, India" />
+  <meta name="author" content="Bansal Coders" />
+  <link rel="canonical" href="https://shubhambansal500.github.io/BansalCoders/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shubhambansal500.github.io/BansalCoders/" />
+  <meta property="og:title" content="Bansal Coders — Build. Launch. Grow." />
+  <meta property="og:description" content="We build world-class mobile apps, websites, and utility software that help businesses grow faster." />
+  <meta property="og:image" content="https://shubhambansal500.github.io/BansalCoders/assets/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bansal Coders — Build. Launch. Grow." />
+  <meta name="twitter:description" content="We build world-class mobile apps, websites, and utility software that help businesses grow faster." />
+  <meta name="twitter:image" content="https://shubhambansal500.github.io/BansalCoders/assets/og-image.png" />
+
+  <!-- Theme colour for mobile browsers -->
+  <meta name="theme-color" content="#050b18" />
+
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,6 +33,15 @@
   <link rel="stylesheet" href="css/home.css" />
 </head>
 <body>
+
+  <!-- Skip to main content (accessibility) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Page Loader -->
+  <div id="page-loader" class="page-loader" aria-hidden="true">
+    <div class="loader-logo">BC</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
 
   <!-- ═══════════════════════════════════════════════
        NAVBAR
@@ -52,7 +81,7 @@
   <!-- ═══════════════════════════════════════════════
        HERO
   ═══════════════════════════════════════════════ -->
-  <section class="hero">
+  <section class="hero" id="main-content">
     <canvas id="particles-canvas"></canvas>
     <div class="hero-bg-blobs">
       <div class="blob blob-1"></div>
@@ -63,9 +92,9 @@
       <div class="hero-content animate-fade-up">
         <div class="section-tag">⚡ Trusted by 50+ Businesses</div>
         <h1 class="hero-title">
-          We Build Digital<br>
-          Products That<br>
-          <span class="gradient-text">Drive Results</span>
+          We Build<br>
+          <span class="gradient-text typed-text" data-words='["Mobile Apps","Websites","Utility Tools","Your Vision"]'>Mobile Apps</span><br>
+          That Drive Results
         </h1>
         <p class="hero-desc">
           From stunning mobile apps to powerful websites and smart utility software —
@@ -429,54 +458,45 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════
-       TESTIMONIALS
+       OUR COMMITMENT
   ═══════════════════════════════════════════════ -->
-  <section class="testimonials-section">
+  <section class="commitment-section">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-tag">💬 Testimonials</div>
-        <h2 class="section-title">What Our <span class="gradient-text">Clients Say</span></h2>
-        <p class="section-subtitle">Don't just take our word for it — hear from the businesses we've helped grow.</p>
+        <div class="section-tag">🤝 Our Commitment</div>
+        <h2 class="section-title">Why Businesses <span class="gradient-text">Choose Us</span></h2>
+        <p class="section-subtitle">We're a new team with fresh energy, modern skills, and a relentless commitment to delivering excellence on every project.</p>
       </div>
-
-      <div class="testimonials-grid stagger-children">
-        <div class="testimonial-card">
-          <div class="testimonial-quote">❝</div>
-          <p>"The team at Bansal Coders built our e-commerce platform from scratch. The result exceeded our expectations — fast, beautiful, and conversion-optimised."</p>
-          <div class="testimonial-author">
-            <div class="ta-avatar" style="background: linear-gradient(135deg,#4f6ef7,#06c8f0)">PR</div>
-            <div>
-              <strong>Priya Rathore</strong>
-              <span>Founder, ShopNest</span>
-            </div>
-            <div class="ta-stars">⭐⭐⭐⭐⭐</div>
-          </div>
+      <div class="commitment-grid stagger-children">
+        <div class="commitment-card">
+          <div class="comm-icon">🎯</div>
+          <h4>Result-Driven Approach</h4>
+          <p>We don't just build software — we build solutions. Every decision is guided by your business goals and measurable outcomes.</p>
         </div>
-
-        <div class="testimonial-card featured-testimonial">
-          <div class="testimonial-quote">❝</div>
-          <p>"Incredible communication, on-time delivery, and a final product that our users absolutely love. Bansal Coders is our go-to dev team for everything."</p>
-          <div class="testimonial-author">
-            <div class="ta-avatar" style="background: linear-gradient(135deg,#f59e0b,#ef4444)">MS</div>
-            <div>
-              <strong>Mohit Sharma</strong>
-              <span>CTO, TechVenture</span>
-            </div>
-            <div class="ta-stars">⭐⭐⭐⭐⭐</div>
-          </div>
+        <div class="commitment-card">
+          <div class="comm-icon">⚡</div>
+          <h4>On-Time Delivery</h4>
+          <p>Deadlines are promises. We use agile sprints and transparent tracking to ensure your project lands on schedule, every time.</p>
         </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-quote">❝</div>
-          <p>"Our mobile app went from idea to App Store in just 8 weeks. The Flutter app they built is smooth, polished, and our users love it."</p>
-          <div class="testimonial-author">
-            <div class="ta-avatar" style="background: linear-gradient(135deg,#10b981,#059669)">RK</div>
-            <div>
-              <strong>Rahul Khanna</strong>
-              <span>Product Manager, FitLife</span>
-            </div>
-            <div class="ta-stars">⭐⭐⭐⭐⭐</div>
-          </div>
+        <div class="commitment-card">
+          <div class="comm-icon">💬</div>
+          <h4>Clear Communication</h4>
+          <p>No black boxes. You get daily updates, open project boards, and a dedicated point of contact from start to launch.</p>
+        </div>
+        <div class="commitment-card">
+          <div class="comm-icon">🏆</div>
+          <h4>Premium Code Quality</h4>
+          <p>Clean, scalable, and thoroughly tested code. We follow industry best practices so your product is built to last.</p>
+        </div>
+        <div class="commitment-card">
+          <div class="comm-icon">🔒</div>
+          <h4>Full IP Ownership</h4>
+          <p>Every line of code we write is yours. We sign NDAs upfront and transfer all IP on project completion. No strings attached.</p>
+        </div>
+        <div class="commitment-card">
+          <div class="comm-icon">🛡️</div>
+          <h4>Post-Launch Support</h4>
+          <p>We stand behind our work with 30 days of free post-launch support. Your success after go-live is our responsibility too.</p>
         </div>
       </div>
     </div>
@@ -576,20 +596,21 @@
     </div>
   </footer>
 
+  <!-- Floating Action Buttons -->
+  <div class="fab-group" aria-label="Quick contact options">
+    <a href="mailto:bansalcoding500@gmail.com" class="fab fab-email" aria-label="Email us" title="Email us">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+    </a>
+    <a href="contact.html" class="fab fab-quote" aria-label="Get a free quote" title="Get a free quote">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </a>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
   <script src="js/main.js"></script>
-  <script>
-    // Animate hero stats on load
-    document.querySelectorAll('.hero-stat-num[data-target]').forEach(el => {
-      const target = parseInt(el.dataset.target);
-      const suffix = el.dataset.suffix || '';
-      let current = 0;
-      const step = target / 60;
-      const timer = setInterval(() => {
-        current = Math.min(current + step, target);
-        el.textContent = Math.floor(current) + suffix;
-        if (current >= target) clearInterval(timer);
-      }, 25);
-    });
-  </script>
 </body>
 </html>
